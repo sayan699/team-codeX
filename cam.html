@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Laura Mera BEEE !</h1>
+<div class="container">
+    <video id="video" width="800" height="800" ></video>
+    <button id="snap">Take Photo</button>
+    <canvas id="canvas" width="800" height="800"></canvas>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    <script>
+            // Grab elements, create settings, etc.
+            
+            var video = document.getElementById('video');
+            
+            // Get access to the camera!
+            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                // Not adding `{ audio: true }` since we only want video now
+                navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                    //video.src = window.URL.createObjectURL(stream);
+                    video.srcObject = stream;
+                    video.play();
+                });
+            }
+            
+            
+            else if(navigator.getUserMedia) { // Standard
+                navigator.getUserMedia({ video: true }, function(stream) {
+                    video.src = stream;
+                    video.play();
+                }, errBack);
+            } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+                navigator.webkitGetUserMedia({ video: true }, function(stream){
+                    video.src = window.webkitURL.createObjectURL(stream);
+                    video.play();
+                }, errBack);
+            } else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
+                navigator.mozGetUserMedia({ video: true }, function(stream){
+                    video.srcObject = stream;
+                    video.play();
+                }, errBack);
+            }
+            
+            </script>
+            
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

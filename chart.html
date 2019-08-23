@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BAR_GRAPH</title>
+    
+</head>
+<body>
+
+<canvas id="bar-chart" width="400" height="200" ></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>    
+        new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+          labels: ["Water", "Electricity", "Garbage", "Roads", "Drainage"],
+          datasets: [
+            {
+              label: "Population (millions)",
+              backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+              data: [478,567,734,784,533]
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'PROBLEMS - BAR DIAGRAM'
+          }
+        }
+    });</script>
+</body>
+</html>
