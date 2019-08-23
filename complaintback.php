@@ -1,7 +1,7 @@
 <?php
 include "dbconn.php";
 
-$folder="pics/";
+
 $problem=$_POST["problem"];
 $filee=$_FILES["file"]["name"];
 $tempname=$_FILES["file"]["tmp_name"];
@@ -10,9 +10,14 @@ $landmark=$_POST["landmark"];
 $city=$_POST["city"];
 $state=$_POST["state"];
 $pin=$_POST["pin"];
+$folder="pics/".$filee;
 
 
-$sql="INSERT INTO complaint(problem,address,landmark,city,state,pin) VALUES ('$problem','$address','$landmark','$city','$state','$pin');";
+
+echo $folder;
+move_uploaded_file($tempname,$folder);
+
+$sql="INSERT INTO complaint(problem,file,address,landmark,city,state,pin) VALUES ('$problem','$folder','$address','$landmark','$city','$state','$pin');";
 
 
 	mysqli_query($conn,$sql);
